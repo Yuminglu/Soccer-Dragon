@@ -127,10 +127,6 @@ function setup() {
 	broccoliplayer=new broccolicontrol();
 	broccoliplayer2=new broccolicontrol2();
 	broccolisadissad=new broccolisadcontrol();
-	mic = new p5.AudioIn();
-  mic.start();
-  fft = new p5.FFT();
-  fft.setInput(mic);
 	setTimeout(displaymessage,5000);
 	setTimeout(displaymessage2,3000);
 	setTimeout(dishungryplaymessage,25000);
@@ -142,6 +138,10 @@ if(frame0){
 	image(front, -10, -10, 910, 510);
 	if(topage1){
 		triggerpage1();
+    mic = new p5.AudioIn();
+    mic.start();
+    fft = new p5.FFT();
+    fft.setInput(mic);
 	}
 }
 if(frame1){
