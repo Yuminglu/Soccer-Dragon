@@ -80,6 +80,7 @@ let cabbageNumber = 0;
 let finddragon1;
 let finddragon2;
 let front;
+let clickarrowmessage;
 
 function preload(){
   soccerfield = loadImage('soccerfield.png');
@@ -114,6 +115,7 @@ function preload(){
 	finddragon1 = loadImage('finddragon1.png');
 	finddragon2 = loadImage('finddragon2.png');
 	front = loadImage('front.png');
+  clickarrowmessage = loadImage('clickarrowmessage.png');
 }
 
 function setup() {
@@ -161,6 +163,7 @@ if(frame1){
 	}
 	if(displayarrow1){
 		image(arrow,740,380,150,150);
+    image(clickarrowmessage,100,400,830,80);
 			// if(topage2){
 		if(760<mouseX && mouseX<860 && 465>mouseY && 440<mouseY && mouseIsPressed) {
 		triggerpage2();
@@ -214,7 +217,7 @@ if(frame1){
 	broccoliplayer2.dragonmovement();
 	image(arrowdown,380,340,150,150);
 	// if(topage5){
-		if(400<mouseX && mouseX<500 && 430<mouseY && mouseY<480 && mouseIsPressed){
+		if(400<mouseX && mouseX<600 && 400<mouseY && mouseY<520 && mouseIsPressed){
 		triggerpage5();
 		}
 	// }
