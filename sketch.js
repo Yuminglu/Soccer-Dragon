@@ -138,10 +138,6 @@ if(frame0){
 	image(front, -10, -10, 910, 510);
 	if(topage1){
 		triggerpage1();
-    mic = new p5.AudioIn();
-    mic.start();
-    fft = new p5.FFT();
-    fft.setInput(mic);
 	}
 }
 if(frame1){
@@ -165,10 +161,10 @@ if(frame1){
 	}
 	if(displayarrow1){
 		image(arrow,740,380,150,150);
-			if(topage2){
-		if(760<mouseX && mouseX<860 && 465>mouseY && 440<mouseY){
+			// if(topage2){
+		if(760<mouseX && mouseX<860 && 465>mouseY && 440<mouseY && mouseIsPressed) {
 		triggerpage2();
-		}
+		// }
 	}
 	}
 }
@@ -179,10 +175,10 @@ if(frame1){
 		   image(pizzashop,0,-10,910,530);
 		   image(pizza,broccoliX2+100,broccoliY2+90,100,100);
 		   image(arrow,740,380,150,150);
-				if(topage3){
-		if(760<mouseX && mouseX<860 && 465>mouseY && 440<mouseY){
+				// if(topage3){
+		if(760<mouseX && mouseX<860 && 465>mouseY && 440<mouseY && mouseIsPressed){
 		triggerpage3();
-		}
+		// }
 	}
 	}
 	broccoliplayer2.display();
@@ -203,11 +199,11 @@ if(frame1){
 	ellipse(400, 300, radius, radius);
 	if(radius>30){
 		image(arrow,740,380,150,150);
-				if(topage4){
-		if(760<mouseX && mouseX<860 && 465>mouseY && 440<mouseY){
+				// if(topage4){
+		if(760<mouseX && mouseX<860 && 465>mouseY && 440<mouseY && mouseIsPressed){
 		triggerpage4();
 		}
-	}
+	// }
 	}
 	}
 	if(frame4){
@@ -217,11 +213,11 @@ if(frame1){
 	broccoliplayer2.display();
 	broccoliplayer2.dragonmovement();
 	image(arrowdown,380,340,150,150);
-	if(topage5){
-		if(400<mouseX && mouseX<500 && 430<mouseY && mouseY<480){
+	// if(topage5){
+		if(400<mouseX && mouseX<500 && 430<mouseY && mouseY<480 && mouseIsPressed){
 		triggerpage5();
 		}
-	}
+	// }
 	}
 	if(frame5){
 	image(meetduck, -10, -10, 910, 510);
@@ -231,11 +227,11 @@ if(frame1){
 	if(150<broccoliX && broccoliX<280 && 200<broccoliY && broccoliY<260){
 	  image(whereisbroccoli,50,100,200,180);
 		image(arrow,740,380,150,150);
-		if(topage6){
-		if(760<mouseX && mouseX<860 && 465>mouseY && 440<mouseY){
+		// if(topage6){
+		if(760<mouseX && mouseX<860 && 465>mouseY && 440<mouseY && mouseIsPressed){
 		triggerpage6();
 		}
-	}
+	// }
 	}
 }
 	if (frame6) {
@@ -254,7 +250,7 @@ if(frame1){
 		textFont(fontRegular);
 		textSize(25);
 		if (topage7) {
-			if (325 < mouseX && mouseX < 410 && 150 < mouseY && mouseY < 230) {
+			if (325 < mouseX && mouseX < 410 && 150 < mouseY && mouseY < 230 && mouseIsPressed) {
 				image(circle, 290, 110, 160, 160);
 				cabbageNumber = 1;
 				triggerpage7();
@@ -276,7 +272,7 @@ if(frame1){
   image(pumpkin,300,220, 250, 250);
 	image(messageofcabbage, 100, 400, 650, 70);
 	if (topage8) {
-	if (450 < mouseX && mouseX < 495 && 150 < mouseY && mouseY < 200) {
+	if (450 < mouseX && mouseX < 495 && 150 < mouseY && mouseY < 200 && mouseIsPressed) {
 				image(circle, 420, 130, 100, 100);
 				cabbageNumber = 2;
 		    triggerpage8();
@@ -297,7 +293,7 @@ image(scissor,200,30, 250, 250);
 image(carrot,300,220, 250, 250);
 		image(messageofcabbage, 100, 400, 650, 70);
 	if (topage9) {
-			if (515 < mouseX && mouseX < 580 && 300 < mouseY && mouseY < 360) {
+			if (515 < mouseX && mouseX < 580 && 300 < mouseY && mouseY < 360 && mouseIsPressed) {
 				image(circle, 490, 280, 100, 100);
 				cabbageNumber = 3;
 				triggerpage9();
@@ -319,7 +315,7 @@ image(carrot,200,30, 250, 250);
 image(boots,300,220, 250, 250);
 		image(messageofcabbage, 100, 400, 650, 70);
 		if (topage10) {
-			if (557 < mouseX && mouseX < 620 && 160 < mouseY && mouseY < 220) {
+			if (557 < mouseX && mouseX < 620 && 160 < mouseY && mouseY < 220 && mouseIsPressed) {
 				image(circle, 535, 140, 100, 100);
 				cabbageNumber = 4;
 				triggerpage10();
@@ -329,10 +325,10 @@ image(boots,300,220, 250, 250);
 	if(frame10){
 		image(finddragon1, -10, -10, 920, 510);
 		image(arrow,740,380,150,150);
-		if(topage11){
-		if(760<mouseX && mouseX<860 && 465>mouseY && 440<mouseY){
+		// if(topage11){
+		if(760<mouseX && mouseX<860 && 465>mouseY && 440<mouseY && mouseIsPressed){
 		triggerpage11();
-		}
+		// }
 	}
 	}
 	if(frame11){
@@ -542,8 +538,21 @@ function displaymessage(){
 }
 
 function mouseClicked(){
-	topage1 = !topage1;
+
+  if (getAudioContext().state !== 'running') {
+    getAudioContext().resume();
+    mic = new p5.AudioIn();
+    fft = new p5.FFT();
+    mic.start();
+    fft.setInput(mic);
+  }
+
+  if (frame0){
+  	topage1 = !topage1;
+  }
+  if (frame1){
 	topage2 = !topage2;
+  }
 	topage3 = !topage3;
 	topage4 = !topage4;
 	topage5 = !topage5;
